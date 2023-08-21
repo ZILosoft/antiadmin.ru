@@ -1,0 +1,6 @@
+- id: optimize-images
+  name: optimize images
+  description: going into folder and do a recursive image optimization
+  entry: go run ./tools/image-optimizer/. -dir=static
+  language: golang
+  types: [ file ]
