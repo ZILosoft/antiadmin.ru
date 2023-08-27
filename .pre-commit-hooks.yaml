@@ -4,5 +4,3 @@
   language: script
   files: \.(png|jpg|jpeg)$
   entry: ./tools/optimize.sh
-  args:
-    - ../../static

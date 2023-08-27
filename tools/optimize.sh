@@ -7,8 +7,8 @@ if ! command -v go version &> /dev/null ; then
     exit 1
 fi
 # if file bin/optimizer not exists, build it
-if ![ -f bin/optimizer ]; then
+if [ ! -f bin/optimizer ]; then
     cd image-optimizer && go build -o ../bin/optimizer && cd ..
 fi
 
-./bin/optimizer -dir=$1
+exec ./bin/optimizer "$@"

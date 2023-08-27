@@ -3,33 +3,30 @@ package main
 import (
 	"fmt"
 	"github.com/chloyka/chloyka.com/tools/image-optimizer/internals"
-	"github.com/spf13/cobra"
 	"os"
 )
 
-var defaultCmd = &cobra.Command{
-	Use:   "optimize",
-	Short: "Optimize images in a directory",
-	Long:  "===================================== \n Optimize images in a directory \n=====================================",
-}
+var infoText = "===================================== \n Optimize image by provided path\n Usage: optimize /path/to/image.jpeg \n====================================="
 
 func main() {
-	defaultCmd.Flags().StringP("dir", "d", "./", "Directory to optimize")
-	err := defaultCmd.Execute()
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+	if len(os.Args) < 2 || os.Args[1] == "" {
+		printHelp()
+		return
 	}
-	dir := defaultCmd.Flags().Lookup("dir")
 
-	// Get all files in dir recursively
-	files, err := internals.SearchForImages(dir.Value.String())
-	if err != nil {
-		fmt.Println(err)
+	fileName := os.Args[1]
+
+	// Check if file exists
+	if _, err := os.Stat(fileName); os.IsNotExist(err) {
+		fmt.Printf("provided file %s does not exist", fileName)
 		os.Exit(1)
 	}
 
-	// Optimize all files
 	optimizer := internals.NewImageOptimizer()
-	optimizer.Optimize(files)
+	optimizer.Optimize(fileName)
+}
+
+func printHelp() {
+	fmt.Println(infoText)
+	os.Exit(1)
 }
