@@ -86,9 +86,9 @@ jobs:
         uses: actions/deploy-pages@v2
 
   notify:
-    name: Build
+    name: Announce new post on Telegram
     runs-on: ubuntu-latest
-    needs: build
+    needs: deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -110,7 +110,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add tools/actions/scripts/announcements.json
+          git add tools/actions/db/announcements.json
           git commit -m "chore: update announcements.json"
           git push
             
