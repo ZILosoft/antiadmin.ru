@@ -35,7 +35,6 @@ languages:
     languageDirection: ltr
     languageName: Русский
     params:
-      subtitle: "${RU_RU_SUBTITLE}"
       description: "${RU_RU_DESCRIPTION}"
     title: "${RU_RU_TITLE}"
     weight: 1
@@ -46,7 +45,6 @@ languages:
     languageDirection: ltr
     languageName: English
     params:
-      subtitle: "${EN_US_SUBTITLE}"
       description: "${EN_US_DESCRIPTION}"
     title: "${EN_US_TITLE}"
     weight: 2

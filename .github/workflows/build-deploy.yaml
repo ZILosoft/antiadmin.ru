@@ -45,11 +45,9 @@ jobs:
           PROFILE_TELEGRAM: "https://t.me/chloyka"
           RU_RU_COPYRIGHT: "Все права на публикации принадлежат @chloyka, если не указано иное. Если есть желание что-то подспиздить - не стесняйтесь указывать ссылку на оригинал. <br>Иначе я вас найду и выебу. ©chloyka 2023"
           RU_RU_TITLE: "Еще один бесполезный блог | Chloyka"
-          RU_RU_SUBTITLE: ""
           RU_RU_DESCRIPTION: "Программист, PRO геймер (нихуя подобного), наставник и хуевый руководитель, человек \"ни дня без хуйни\" и не только."
           EN_US_COPYRIGHT: "All rights reserved to @chloyka, if another is not described. If you want to use something - dont be shy to add original link referred to this site. <br>Or i will find you and kick your ass. ©chloyka 2023"
           EN_US_TITLE: "Another useless blog | Chloyka"
-          EN_US_SUBTITLE: ""
           EN_US_DESCRIPTION: "Coder, PRO gamer (ofc not), mentor and so fucking bad manager, a man \"shit happens every day\" and other."
         with:
           input: example.hugo.yaml
