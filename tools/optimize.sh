@@ -11,4 +11,4 @@ if ! command -v image-optimizer &> /dev/null ; then
   go install github.com/chloyka/chloyka.com/tools/image-optimizer@latest
 fi
 
-exec image-optimizer "$@"
+image-optimizer "$@"
