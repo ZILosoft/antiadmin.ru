@@ -96,10 +96,8 @@ jobs:
         id: notify
         run: |
           cd tools/actions/scripts && python get-first-unpublished-announcement.py
-      - name: exit if notify message is empty
-        if: ${{ steps.notify.outputs.notify == '' }}
-        run: exit 0
       - name: send telegram message
+        if: ${{ steps.notify.outputs.notify == '' }}
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
@@ -107,6 +105,7 @@ jobs:
           message: |
             ${{ steps.notify.outputs.notify }}
       - name: commit and push
+        if: ${{ steps.notify.outputs.notify == '' }}
         run: |
           git config user.name GitHubActionsBot
           git config user.email github-actions@github.com
