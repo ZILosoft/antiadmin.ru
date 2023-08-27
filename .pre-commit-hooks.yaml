@@ -1,9 +1,8 @@
 - id: optimize-images
   name: optimize images
   description: going into folder and do a recursive image optimization
-  language: golang
-  types: [ file ]
-  files: \.(png|jpg|jpeg|gif|svg)$
-  entry: cd tools/image-optimizer && go run .
+  language: script
+  files: \.(png|jpg|jpeg)$
+  entry: ./tools/optimize.sh
   args:
-    - -dir=../../static
+    - ../../static
