@@ -3,10 +3,10 @@
   description: optimize image that are committed
   language: script
   files: \.(png|jpg|jpeg)$
-  entry: ./tools/optimize.sh
+  entry: ./tools/pre-commit/optimize.sh
 - id: translate-posts
   name: translate posts
   description: translate posts that committed, but doesn't have translation yet
   language: script
   files: \.(md)$
-  entry: ./tools/translate.sh
+  entry: ./tools/pre-commit/translate.sh

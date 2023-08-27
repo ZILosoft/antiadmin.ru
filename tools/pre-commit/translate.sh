@@ -12,7 +12,7 @@ export PATH="$(go env GOROOT)/bin:$PATH"
 
 # if file bin/optimizer not exists, build it
 if ! command -v content-translator &> /dev/null ; then
-  go install github.com/chloyka/chloyka.com/tools/content-translator@latest
+  go install github.com/chloyka/chloyka.com/tools/pre-commit/content-translator@latest
 fi
 
 content-translator "$@"

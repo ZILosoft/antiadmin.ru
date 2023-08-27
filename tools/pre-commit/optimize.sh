@@ -12,7 +12,7 @@ export PATH="$(go env GOROOT)/bin:$PATH"
 
 # if file bin/optimizer not exists, build it
 if ! command -v image-optimizer &> /dev/null ; then
-  go install github.com/chloyka/chloyka.com/tools/image-optimizer@latest
+  go install github.com/chloyka/chloyka.com/tools/pre-commit/image-optimizer@latest
 fi
 
 image-optimizer "$@"

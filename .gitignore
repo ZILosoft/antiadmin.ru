@@ -5,3 +5,4 @@ hugo.yaml
 public
 resources
 tools/bin
+tools/pre-commit/bin
