@@ -1,6 +1,6 @@
 - id: optimize-images
   name: optimize images
   description: going into folder and do a recursive image optimization
-  language: golang
+  language: script
   files: \.(png|jpg|jpeg)$
-  entry: image-optimizer
+  entry: ./tools/optimize.sh

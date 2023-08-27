@@ -7,8 +7,8 @@ if ! command -v go version &> /dev/null ; then
     exit 1
 fi
 # if file bin/optimizer not exists, build it
-if [ ! -f bin/optimizer ]; then
-    cd ./tools/image-optimizer && go build -o ../bin/optimizer && cd ..
+if ! command -v image-optimizer &> /dev/null ; then
+  go install github.com/chloyka/chloyka.com/tools/image-optimizer@latest
 fi
 
-exec ./tools/bin/optimizer "$@"
+exec image-optimizer "$@"
