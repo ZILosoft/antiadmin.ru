@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/chloyka/chloyka.com
-    rev: "1343d09"
+    rev: "2bb1f0d"
     hooks:
       - id: optimize-images
       - id: translate-posts
