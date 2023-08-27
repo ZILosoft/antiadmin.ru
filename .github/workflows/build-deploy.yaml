@@ -36,25 +36,23 @@ jobs:
         env:
           APP_CLIENT_ID: ${{ secrets.APP_CLIENT_ID }}
           APP_CLIENT_SECRET: ${{ secrets.APP_CLIENT_SECRET }}
-          GITALK_OWNER: "chloyka"
-          GITALK_ADMIN: "chloyka"
+          GITALK_OWNER: ${{ secrets.PROFILE_GITHUB }}
+          GITALK_ADMIN: ${{ secrets.PROFILE_GITHUB }}
           GITALK_ID: "location.pathname"
-          PROFILE_STATUS_EMOJI: "💭"
-          PROFILE_LOCATION: "Tigre, Argentina"
-          PROFILE_NAME: "Nikita Vorobev"
-          PROFILE_GITHUB: "chloyka"
-          PROFILE_TELEGRAM: "https://t.me/chloyka"
-          RU_RU_COPYRIGHT: "Все права на публикации принадлежат @chloyka, если не указано иное. Если есть желание что-то подспиздить - не стесняйтесь указывать ссылку на оригинал. <br>Иначе я вас найду и выебу. ©chloyka 2023"
-          RU_RU_TITLE: "Еще один бесполезный блог | Chloyka"
-          RU_RU_DESCRIPTION: "Программист, PRO геймер (нихуя подобного), наставник и хуевый руководитель, человек \"ни дня без хуйни\" и не только."
-          EN_US_COPYRIGHT: "All rights reserved to @chloyka, if another is not described. If you want to use something - dont be shy to add original link referred to this site. <br>Or i will find you and kick your ass. ©chloyka 2023"
-          EN_US_TITLE: "Another useless blog | Chloyka"
-          EN_US_DESCRIPTION: "Coder, PRO gamer (ofc not), mentor and so fucking bad manager, a man \"shit happens every day\" and other."
+          PROFILE_STATUS_EMOJI: ${{ secrets.PROFILE_STATUS_EMOJI }}
+          PROFILE_LOCATION: ${{ secrets.PROFILE_LOCATION }}
+          PROFILE_NAME: ${{ secrets.PROFILE_NAME }}
+          PROFILE_GITHUB: ${{ secrets.PROFILE_GITHUB }}
+          PROFILE_TELEGRAM: ${{ secrets.PROFILE_TELEGRAM }}
+          RU_RU_COPYRIGHT: ${{ secrets.RU_RU_COPYRIGHT }}
+          RU_RU_TITLE: ${{ secrets.RU_RU_TITLE }}
+          RU_RU_DESCRIPTION: ${{ secrets.RU_RU_DESCRIPTION }}
+          EN_US_COPYRIGHT: ${{ secrets.EN_US_COPYRIGHT }}
+          EN_US_TITLE: ${{ secrets.EN_US_TITLE }}
+          EN_US_DESCRIPTION: ${{ secrets.EN_US_DESCRIPTION }}
         with:
           input: example.hugo.yaml
           output: hugo.yaml
-      - name: Debug
-        run: cat hugo.yaml
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3

@@ -5,22 +5,22 @@ theme: "github-style"
 enableGitalk: true
 params:
   gitalk:
-    clientID: "${APP_CLIENT_ID}"
-    clientSecret: "${APP_CLIENT_SECRET}"
+    clientID: '${APP_CLIENT_ID}'
+    clientSecret: '${APP_CLIENT_SECRET}'
     repo: "chloyka/chloyka.com"
-    owner: "${GITALK_OWNER}"
-    admin: "${GITALK_ADMIN}"
-    id: "${GITALK_ID}"
+    owner: '${GITALK_OWNER}'
+    admin: '${GITALK_ADMIN}'
+    id: '${GITALK_ID}'
     labels: "gitalk"
     perPage: 30
     pagerDirection: "last"
     createIssueManually: true
     distractionFreeMode: false
-  userStatusEmoji: "${PROFILE_STATUS_EMOJI}"
-  location: "${PROFILE_LOCATION}"
-  author: "${PROFILE_NAME}"
-  github: "${PROFILE_GITHUB}"
-  avatar: "/images/profile/avatar.jpg"
+  userStatusEmoji: '${PROFILE_STATUS_EMOJI}'
+  location: '${PROFILE_LOCATION}'
+  author: '${PROFILE_NAME}'
+  github: '${PROFILE_GITHUB}'
+  avatar: '/images/profile/avatar.jpg'
   links:
     - title: "Telegram"
       href: "${PROFILE_TELEGRAM}"
@@ -29,24 +29,24 @@ defaultContentLanguage: ru-ru
 defaultContentLanguageInSubdir: true
 languages:
   ru-ru:
-    copyright: "${RU_RU_COPYRIGHT}"
+    copyright: '${RU_RU_COPYRIGHT}'
     disabled: false
     languageCode: ru-RU
     languageDirection: ltr
     languageName: Русский
     params:
-      description: "${RU_RU_DESCRIPTION}"
-    title: "${RU_RU_TITLE}"
+      description: '${RU_RU_DESCRIPTION}'
+    title: '${RU_RU_TITLE}'
     weight: 1
   en-us:
-    copyright: "${EN_US_COPYRIGHT}"
+    copyright: '${EN_US_COPYRIGHT}'
     disabled: false
     languageCode: en-US
     languageDirection: ltr
     languageName: English
     params:
-      description: "${EN_US_DESCRIPTION}"
-    title: "${EN_US_TITLE}"
+      description: '${EN_US_DESCRIPTION}'
+    title: '${EN_US_TITLE}'
     weight: 2
 
 
