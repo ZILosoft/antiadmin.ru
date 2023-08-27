@@ -95,9 +95,9 @@ jobs:
       - name: get notify message
         id: notify
         run: |
-          cd tools/actions/scripts && python get-first-unpublished-announcement.py
+          echo "::set-output name=notify::$(cd tools/actions/scripts && python get-first-unpublished-announcement.py)"
       - name: send telegram message
-        if: ${{ steps.notify.outputs.notify == '' }}
+        if: ${{ steps.notify.outputs.notify != '' }}
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
@@ -105,12 +105,10 @@ jobs:
           message: |
             ${{ steps.notify.outputs.notify }}
       - name: commit and push
-        if: ${{ steps.notify.outputs.notify == '' }}
+        if: ${{ steps.notify.outputs.notify != '' }}
         run: |
           git config user.name GitHubActionsBot
           git config user.email github-actions@github.com
           git add tools/actions/db/announcements.json
           git commit -m "chore: update announcements.json"
           git push
-            
-          
