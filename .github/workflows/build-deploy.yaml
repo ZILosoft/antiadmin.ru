@@ -1,0 +1,83 @@
+name: Deploy blog
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: "build-deploy"
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.117.0
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - uses: danielr1996/envsubst-action@1.0.0
+        env:
+          APP_CLIENT_ID: ${{ secrets.APP_CLIENT_ID }}
+          APP_CLIENT_SECRET: ${{ secrets.APP_CLIENT_SECRET }}
+          GITALK_OWNER: "chloyka"
+          GITALK_ADMIN: "chloyka"
+          GITALK_ID: "location.pathname"
+          PROFILE_STATUS_EMOJI: "💭"
+          PROFILE_LOCATION: "Tigre, Argentina"
+          PROFILE_NAME: "Nikita Vorobev"
+          PROFILE_GITHUB: "chloyka"
+          PROFILE_TELEGRAM: "https://t.me/chloyka"
+          RU_RU_COPYRIGHT: "Все права на публикации принадлежат @chloyka, если не указано иное. Если есть желание что-то подспиздить - не стесняйтесь указывать ссылку на оригинал. <br>Иначе я вас найду и выебу. ©chloyka 2023"
+          RU_RU_TITLE: "Еще один бесполезный блог | Chloyka"
+          RU_RU_DESCRIPTION: "Программист, PRO геймер (нихуя подобного), наставник и хуевый руководитель, человек \"ни дня без хуйни\" и не только."
+          EN_US_COPYRIGHT: "All rights reserved to @chloyka, if another is not described. If you want to use something - dont be shy to add original link referred to this site. <br>Or i will find you and kick your ass. ©chloyka 2023"
+          EN_US_TITLE: "Another useless blog | Chloyka"
+          EN_US_DESCRIPTION: "Coder, PRO gamer (ofc not), mentor and so fucking bad manager, a man \"shit happens every day\" and other."
+        with:
+          input: example.hugo.yaml
+          output: hugo.yaml
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
