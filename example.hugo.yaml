@@ -25,6 +25,9 @@ params:
     - title: "Telegram"
       href: "${PROFILE_TELEGRAM}"
       icon: "/images/profile/telegram.svg"
+    - title: "Telegram Public"
+      href: "${PUBLIC_TELEGRAM}"
+      icon: "/images/profile/telegram.svg"
 defaultContentLanguage: ru-ru
 defaultContentLanguageInSubdir: true
 languages:
