@@ -39,21 +39,21 @@ jobs:
         env:
           APP_CLIENT_ID: ${{ secrets.APP_CLIENT_ID }}
           APP_CLIENT_SECRET: ${{ secrets.APP_CLIENT_SECRET }}
-          GITALK_OWNER: ${{ secrets.PROFILE_GITHUB }}
-          GITALK_ADMIN: ${{ secrets.PROFILE_GITHUB }}
+          GITALK_OWNER: "ZILosoft"
+          GITALK_ADMIN: "ZILosoft"
           GITALK_ID: "location.pathname"
-          PROFILE_STATUS_EMOJI: ${{ secrets.PROFILE_STATUS_EMOJI }}
-          PROFILE_LOCATION: ${{ secrets.PROFILE_LOCATION }}
-          PROFILE_NAME: ${{ secrets.PROFILE_NAME }}
+          PROFILE_STATUS_EMOJI: "🫠"
+          PROFILE_LOCATION: "Europe"
+          PROFILE_NAME: "ZILosoft"
           PROFILE_GITHUB: ${{ secrets.PROFILE_GITHUB }}
           PROFILE_TELEGRAM: ${{ secrets.PROFILE_TELEGRAM }}
           PUBLIC_TELEGRAM: ${{ secrets.PUBLIC_TELEGRAM }}
-          RU_RU_COPYRIGHT: ${{ secrets.RU_RU_COPYRIGHT }}
-          RU_RU_TITLE: ${{ secrets.RU_RU_TITLE }}
-          RU_RU_DESCRIPTION: ${{ secrets.RU_RU_DESCRIPTION }}
-          EN_US_COPYRIGHT: ${{ secrets.EN_US_COPYRIGHT }}
-          EN_US_TITLE: ${{ secrets.EN_US_TITLE }}
-          EN_US_DESCRIPTION: ${{ secrets.EN_US_DESCRIPTION }}
+          RU_RU_COPYRIGHT: "®"
+          RU_RU_TITLE: "Еще один бесполезный блог"
+          RU_RU_DESCRIPTION: "иногда что то сюда пишу"
+          EN_US_COPYRIGHT: "®"
+          EN_US_TITLE: "blog antiadmin"
+          EN_US_DESCRIPTION: "blog antiadmin"
         with:
           input: example.hugo.yaml
           output: hugo.yaml
